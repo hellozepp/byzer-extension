@@ -435,6 +435,9 @@ class SQLDataSummaryV2(override val uid: String) extends SQLAlg with MllibFuncti
 
     if (smallDatasetAccurately) {
       total = df.count()
+//      if (total == 0) {
+//        df.sparkSession.emptyDataFrame
+//      }
       logInfo(format(s"The whole dataset is [${total}] and the approxThreshold is ${approxThreshold}"))
       if (total <= approxThreshold) {
         isSmallData = true
